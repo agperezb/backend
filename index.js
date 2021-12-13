@@ -1,9 +1,17 @@
+//framework
 const  express = require('express');
+
+//conexxion base
 const conectarDB = require('./config/db');
+
+//rutas de producto
 const producto = require('./routes/producto');
+//rutas usuario
 const user = require('./routes/user');
+
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+
 require('dotenv').config({ path: 'variables.env'});
 //creamos el servidor
 const app = express();

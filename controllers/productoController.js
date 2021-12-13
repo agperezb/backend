@@ -1,4 +1,5 @@
 const Producto = require('../models/producto');
+const {response} = require("express");
 
 exports.crearProducto = async (req, res) => {
     try {
@@ -15,7 +16,10 @@ exports.crearProducto = async (req, res) => {
 exports.obtenerProductos = async  (req, res) => {
     try {
         const productos = await  Producto.find();
-        res.json(productos);
+        res.json({
+            status: 200,
+            data: productos
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error');
@@ -49,7 +53,10 @@ exports.obtenerProducto = async  (req, res) => {
         if(!producto) {
             res.status(404).json({ msg: 'No existe el producto' });
         }
-        res.json(producto);
+        res.json({
+            status: '200',
+            data: producto
+        });
 
     } catch (error) {
         console.log(error);

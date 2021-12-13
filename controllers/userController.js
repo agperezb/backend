@@ -3,8 +3,8 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 exports.register = async (req, res) => {
     try {
-        const {email, password} = req.body;
-        const user = new User({email, password});
+        const {name, email, password} = req.body;
+        const user = new User({name, email, password});
         await user.save();
 
         const token = jwt.sign({ _id: user._id }, process.env.API_KEY)
