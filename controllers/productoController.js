@@ -16,10 +16,7 @@ exports.crearProducto = async (req, res) => {
 exports.obtenerProductos = async  (req, res) => {
     try {
         const productos = await  Producto.find();
-        res.json({
-            status: 200,
-            data: productos
-        });
+        res.json(productos);
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error');
@@ -53,11 +50,7 @@ exports.obtenerProducto = async  (req, res) => {
         if(!producto) {
             res.status(404).json({ msg: 'No existe el producto' });
         }
-        res.json({
-            status: '200',
-            data: producto
-        });
-
+        res.json(producto);
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error');
